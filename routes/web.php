@@ -36,3 +36,5 @@ Route::patch('/tasks/{task}/start', [TaskController::class, 'start'])->name('tas
 Route::patch('/tasks/{task}/complete', [TaskController::class, 'complete'])->name('tasks.complete');
 
 Route::patch('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
+
+Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');

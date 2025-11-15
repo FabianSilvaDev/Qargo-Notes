@@ -8,11 +8,14 @@
             <x-heroicon-o-pencil class="w-5 h-5 text-[#7e8590] transition-all duration-300 ease-out" />
             <p class="font-semibold text-[#7e8590]">Edit</p>
         </li>
-        <li
-            class="flex items-center gap-2.5 px-1.5 py-1 rounded-md cursor-pointer transition-all duration-300 ease-out hover:bg-[#8e2a2a] hover:text-white active:scale-95">
-            <x-heroicon-o-trash class="w-5 h-5 text-[#7e8590]" />
-            <p class="font-semibold text-[#7e8590] ">Delete</p>
-        </li>
+        <form action="{{ route('tasks.destroy', $t->id) }}" method="POST" class="delete-task-form">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-red-500 hover:text-red-700 font-semibold text-sm flex items-center gap-1">
+                <x-heroicon-s-trash class="w-5 h-5" />
+                Delete
+            </button>
+        </form>
         <li
             class="flex items-center gap-2.5 px-1.5 py-1 rounded-md cursor-pointer transition-all duration-300 ease-out hover:bg-[#383547d5] active:scale-95 text-[#bd89ff]">
             <x-heroicon-o-users class="w-5 h-5 text-[#bd89ff]" />

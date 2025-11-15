@@ -22,7 +22,7 @@ class TaskController extends Controller
 
         $taskCount = $tasks->count();
         $activeTab = 'overview';
-        
+
         // dd($tasks);
 
         return view('task.index', [
@@ -107,9 +107,11 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(task $task)
+    public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return back()->with('success', 'Task deleted successfully.');
     }
 
     public function start($taskId)
