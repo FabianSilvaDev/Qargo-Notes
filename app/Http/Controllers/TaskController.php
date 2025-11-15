@@ -54,7 +54,8 @@ class TaskController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'label' => 'nullable|string|max:100',
-            'description' => 'nullable|string',
+            'description' => 'nullable|string|max:250',
+            'priority' => 'required|in:High,Medium,Normal',
         ]);
         // Reads the contents of the tasks.json file.
         // Converts it into a PHP array.
@@ -77,7 +78,9 @@ class TaskController extends Controller
             'user_id' => Auth::id(),
             'title' => $request->title,
             'label' => $request->label ?? 'pending',
-            'description' => $request->description
+            'description' => $request->description,
+            'priority' => $request->priority ?? 'Normal',
+            'created_at' => date('Y-m-d H:i:s'),
         ];
 
         file_put_contents($tasksFile, json_encode($tasks));
@@ -105,9 +108,26 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, task $task)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'description' => 'nullable|string|max:2000'
+        ]);
+
+        $file = storage_path('tasks.json');
+        $tasks = json_decode(file_get_contents($file), true);
+
+        foreach ($tasks as &$task) {
+            if ($task['id'] == $id) {
+                $task['description'] = $request->description;
+                $task['updated_at'] = now()->format('Y-m-d H:i:s');
+                break;
+            }
+        }
+
+        file_put_contents($file, json_encode($tasks, JSON_PRETTY_PRINT));
+
+        return redirect()->back()->with('success', 'Task updated');
     }
 
     /**

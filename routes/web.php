@@ -1,5 +1,6 @@
 <?php
 // modell
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
@@ -33,3 +34,5 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::patch('/tasks/{task}/start', [TaskController::class, 'start'])->name('tasks.start');
 
 Route::patch('/tasks/{task}/complete', [TaskController::class, 'complete'])->name('tasks.complete');
+
+Route::patch('/tasks/{id}', [TaskController::class, 'update'])->name('tasks.update');

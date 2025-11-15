@@ -1,1 +1,70 @@
-[{"id":"nzfkOavU","user_id":2,"title":"First task","label":"inprogress","description":"it's the firts task, here we prove the interface"},{"id":"ZgtQCRQ7","user_id":2,"title":"Second Card","label":"complete","description":"it's the second card"},{"id":"PLErXGs2","user_id":2,"title":"new task","label":"inprogress","description":"hola"},{"id":"70O0pbf0","user_id":2,"title":"dsadsa","label":"inprogress","description":"dsadasdsa"},{"id":"yvNSD7iV","user_id":2,"title":"dsadasds","label":"complete","description":"dasdsadsa"},{"id":"Rpiuljge","user_id":2,"title":"other task","label":"complete","description":"this a other task"},{"id":"eTxasdE6","user_id":2,"title":"other task","label":"pending","description":null}]
+[
+    {
+        "id": "VIoPgApE",
+        "user_id": 2,
+        "title": "fdfds",
+        "label": "inprogress",
+        "description": "hola",
+        "priority": "High",
+        "created_at": "2025-11-15 03:31:57",
+        "updated_at": "2025-11-15 05:08:53"
+    },
+    {
+        "id": "kMY4M73y",
+        "user_id": 2,
+        "title": "dsads",
+        "label": "inprogress",
+        "description": "esta tarea esta en progreso",
+        "priority": "Medium",
+        "created_at": "2025-11-15 04:03:39",
+        "updated_at": "2025-11-15 05:30:25"
+    },
+    {
+        "id": "nSoBXB2F",
+        "user_id": 2,
+        "title": "new task",
+        "label": "inprogress",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "priority": "Normal",
+        "created_at": "2025-11-15 04:04:44",
+        "updated_at": "2025-11-15 05:28:07"
+    },
+    {
+        "id": "ZWIJkixA",
+        "user_id": 2,
+        "title": "new task",
+        "label": "complete",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+        "priority": "Medium",
+        "created_at": "2025-11-15 04:05:59"
+    },
+    {
+        "id": "uLwwE7kB",
+        "user_id": 2,
+        "title": "new task 5555",
+        "label": "inprogress",
+        "description": "hola",
+        "priority": "Medium",
+        "created_at": "2025-11-15 04:11:36",
+        "updated_at": "2025-11-15 06:07:44"
+    },
+    {
+        "id": "X3BPk0bT",
+        "user_id": 2,
+        "title": "fdfds",
+        "label": "pending",
+        "description": "fdsfsd",
+        "priority": "High",
+        "created_at": "2025-11-15 05:15:17"
+    },
+    {
+        "id": "N7ddSE6I",
+        "user_id": 1,
+        "title": "new task",
+        "label": "pending",
+        "description": "this my first task, width the app end to 80%, only lack integrate the DB, however now it's created, I will migrate to vercel and i end.",
+        "priority": "High",
+        "created_at": "2025-11-15 07:27:14",
+        "updated_at": "2025-11-15 07:29:55"
+    }
+]

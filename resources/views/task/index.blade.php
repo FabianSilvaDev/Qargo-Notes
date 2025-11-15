@@ -7,21 +7,21 @@
     <title>Qargo Notes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-</head>
+    <meta http-equiv="Expires" content="0" </head>
 
-<body class="font-[poppins]">
-
+<body class="font-[poppins]" x-data="{ openSidebar: false }">
     @include('components.task-form')
     <section class="flex w-full h-auto">
         @include('components.task-sidebar')
-        @include('components.tasks')
+        <div class="flex flex-col w-full sm:ml-64 ">
+            @include('ui.header.header')
+            @include('components.tasks')
+        </div>
     </section>
 
 </body>

@@ -1,37 +1,50 @@
 <header class="w-full py-2 flex flex-row px-10 justify-between items-center shadow-gray-200 shadow-sm">
 
-    <section class="flex gap-7">
-        <button class="tab-btn h-full flex gap-2 items-center text-gray-400 font-medium py-2 border-b-2 border-transparent">
+    <section class="sm:flex gap-7 hidden">
+        <button
+            class="tab-btn h-full flex gap-2 items-center text-gray-400 font-medium py-2 border-b-2 border-transparent">
             <x-heroicon-s-folder-arrow-down class="w-5 h-5" />
             Overview
         </button>
 
-        <button class="tab-btn h-full flex gap-2 items-center border-b-2 border-transparent text-gray-400 font-normal py-2">
+        <button
+            class="tab-btn h-full flex gap-2 items-center border-b-2 border-transparent text-gray-400 font-normal py-2">
             <x-heroicon-s-list-bullet class="w-5 h-5" />
             List
         </button>
 
-        <button class="tab-btn h-full flex gap-2 items-center border-b-2 border-[#6E47FF] text-[#6E47FF] font-normal py-2">
+        <button
+            class="tab-btn h-full flex gap-2 items-center border-b-2 border-[#6E47FF] text-[#6E47FF] font-normal py-2">
             <x-heroicon-o-view-columns class="w-5 h-5" />
             Board
         </button>
 
-        <button class="tab-btn h-full flex gap-2 items-center border-b-2 border-transparent text-gray-400 font-normal py-2">
+        <button
+            class="tab-btn h-full flex gap-2 items-center border-b-2 border-transparent text-gray-400 font-normal py-2">
             <x-heroicon-o-calendar-days class="w-5 h-5" />
             Calendar
         </button>
     </section>
 
-    <article class="flex gap-2 text-gray-400 font-normal items-center">
+    <button @click="openSidebar = !openSidebar" class="sm:hidden flex p-2 rounded hover:bg-gray-200 transition">
+        <!-- hamburguer icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+    
+    <article class="flex gap-2 text-gray-400 font-normal items-center w-full justify-end">
         <h2>Hello! {{ $userTask['name'] }}</h2>
         <x-heroicon-s-user-circle class="w-7 h-7" />
     </article>
+
 
 </header>
 
 <script>
     // Selecciona todos los botones con clase tab-btn
     const tabs = document.querySelectorAll('.tab-btn');
+
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
