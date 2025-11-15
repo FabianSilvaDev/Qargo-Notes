@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public $withinTransaction = false;
 
     /**
@@ -15,10 +14,15 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->string("label")->nullable();
-            $table->text("description")->nullable();
+            $table->unsignedBigInteger('user_id'); // <<--- columna necesaria
+            $table->string('title');
+            $table->string('label')->default('pending'); // valor por defecto
+            $table->text('description')->nullable();
+            $table->string('priority')->default('Normal'); // valor por defecto
             $table->timestamps();
+
+            // Llave foránea
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

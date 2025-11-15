@@ -15,25 +15,20 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasksFile = storage_path('tasks.json');
+        $user = Auth::user();
 
-        if (!file_exists($tasksFile)) {
-            file_put_contents($tasksFile, json_encode([]));
-        }
+        // Obtener todas las tareas del usuario
+        $tasks = Task::where('user_id', $user->id)->get();
 
-        $tasks = json_decode(file_get_contents($tasksFile), true) ?? [];
-
-        // Filtrar solo tareas del usuario autenticado
-        $userTasks = array_filter($tasks, fn($task) => $task['user_id'] == Auth::id());
-
-        $taskCount = count($userTasks);
-        $userTask = Auth::user();
+        $taskCount = $tasks->count();
         $activeTab = 'overview';
+        
+        // dd($tasks);
 
         return view('task.index', [
-            'tasks' => $userTasks,
+            'tasks' => $tasks,
             'taskCount' => $taskCount,
-            'userTask' => $userTask,
+            'userTask' => $user,
             'activeTab' => $activeTab
         ]);
     }
@@ -53,39 +48,19 @@ class TaskController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'label' => 'nullable|string|max:100',
-            'description' => 'nullable|string|max:250',
-            'priority' => 'required|in:High,Medium,Normal',
+            'description' => 'nullable|string',
+            'priority' => 'nullable|string',
         ]);
-        // Reads the contents of the tasks.json file.
-        // Converts it into a PHP array.
-        // If the file is empty or contains invalid JSON, ensures $tasks is an empty array.
-        $tasksFile = storage_path('tasks.json');
 
-        if (!file_exists($tasksFile)) {
-            file_put_contents($tasksFile, json_encode([]));
-        }
-
-        $tasks = json_decode(file_get_contents($tasksFile), true) ?? [];
-
-        // Generate a unique ID for the task
-        do {
-            $id = Str::random(8); // ID de 8 caracteres
-        } while (collect($tasks)->pluck('id')->contains($id));
-
-        $tasks[] = [
-            'id' => $id,
+        $task = Task::create([
             'user_id' => Auth::id(),
             'title' => $request->title,
-            'label' => $request->label ?? 'pending',
             'description' => $request->description,
             'priority' => $request->priority ?? 'Normal',
-            'created_at' => date('Y-m-d H:i:s'),
-        ];
+            // 'label' se llenará automáticamente con 'pendiente'
+        ]);
 
-        file_put_contents($tasksFile, json_encode($tasks));
-
-        return redirect('/');
+        return redirect()->back()->with('success', 'Tarea creada correctamente.');
     }
 
 
@@ -108,26 +83,25 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
-        $request->validate([
-            'description' => 'nullable|string|max:2000'
-        ]);
-
-        $file = storage_path('tasks.json');
-        $tasks = json_decode(file_get_contents($file), true);
-
-        foreach ($tasks as &$task) {
-            if ($task['id'] == $id) {
-                $task['description'] = $request->description;
-                $task['updated_at'] = now()->format('Y-m-d H:i:s');
-                break;
-            }
+        // Verificar que el usuario autenticado sea dueño de la tarea
+        if ($task->user_id !== Auth::id()) {
+            abort(403, 'No autorizado');
         }
 
-        file_put_contents($file, json_encode($tasks, JSON_PRETTY_PRINT));
+        // Validar datos
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'priority' => 'nullable|string',
+            'label' => 'nullable|string',
+        ]);
 
-        return redirect()->back()->with('success', 'Task updated');
+        // Actualizar tarea
+        $task->update($request->only('title', 'description', 'priority', 'label'));
+
+        return redirect()->back()->with('success', 'Tarea actualizada.');
     }
 
     /**
@@ -140,38 +114,25 @@ class TaskController extends Controller
 
     public function start($taskId)
     {
-        $tasksFile = storage_path('tasks.json');
-        $tasks = json_decode(file_get_contents($tasksFile), true) ?? [];
+        $task = Task::where('id', $taskId)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
 
-        // Search the task for user and id
-        foreach ($tasks as &$task) {
-            if ($task['id'] === $taskId && $task['user_id'] == Auth::id()) {
-                $task['label'] = 'inprogress';
-                break;
-            }
-        }
-
-        // save change
-        file_put_contents($tasksFile, json_encode($tasks));
+        $task->label = 'inprogress';
+        $task->save();
 
         return redirect()->back()->with('success', 'Task started!');
     }
+
     public function complete($taskId)
     {
-        $tasksFile = storage_path('tasks.json');
-        $tasks = json_decode(file_get_contents($tasksFile), true) ?? [];
+        $task = Task::where('id', $taskId)
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
 
-        // Search the task for user and id
-        foreach ($tasks as &$task) {
-            if ($task['id'] === $taskId && $task['user_id'] == Auth::id()) {
-                $task['label'] = 'complete';
-                break;
-            }
-        }
+        $task->label = 'complete';
+        $task->save();
 
-        // save change
-        file_put_contents($tasksFile, json_encode($tasks));
-
-        return redirect()->back()->with('success', 'Task started!');
+        return redirect()->back()->with('success', 'Task completed!');
     }
 }

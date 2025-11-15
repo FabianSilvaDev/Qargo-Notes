@@ -35,4 +35,4 @@ Route::patch('/tasks/{task}/start', [TaskController::class, 'start'])->name('tas
 
 Route::patch('/tasks/{task}/complete', [TaskController::class, 'complete'])->name('tasks.complete');
 
-Route::patch('/tasks/{id}', [TaskController::class, 'update'])->name('tasks.update');
+Route::patch('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
