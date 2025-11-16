@@ -4,6 +4,18 @@ A **Kanban-style task management** web application, built as a full-stack Larave
 
 ## You can access the live version of **Qargo Notes** here:  
 [Qargo Notes Live](https://qargo-notes-peach.vercel.app/login)
+
+Instructions
+
+When you open the application, the first step is to create an account if you don’t already have one. After registering, you can log in and start managing your tasks on the Kanban dashboard.
+
+## Test Account Credentials
+
+You can also use the following credentials to log in immediately:
+
+Email: admin@qargocoffe.com
+
+Password: Qargo3312.
 ---
 
 ## 🚀 Technologies Used
