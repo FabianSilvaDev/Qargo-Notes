@@ -62,4 +62,3 @@
         @endif
     @endforeach
 </article>
-@include('scripts.tasks')

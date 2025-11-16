@@ -10,7 +10,7 @@
 
 <body class="flex items-center justify-center min-h-screen w-full bg-[#FCFBF6]">
 
-    <div class="w-1/2 h-screen hidden md:block bg-[url('public/img/coffe.png')] bg-no-repeat"></div>
+    <div class="w-1/2 h-screen hidden md:block bg-[url('/public/coffe.png')] bg-no-repeat"></div>
 
 
     <form method="POST" action="{{ route('login') }}"

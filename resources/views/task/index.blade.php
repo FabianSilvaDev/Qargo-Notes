@@ -15,6 +15,8 @@
     <meta http-equiv="Expires" content="0" </head>
 
 <body class="font-[poppins]" x-data="{ openSidebar: false }">
+    @yield('content')
+
     @include('components.task-form')
     <section class="flex w-full h-auto">
         @include('components.task-sidebar')
@@ -23,6 +25,7 @@
             @include('components.tasks')
         </div>
     </section>
+    @yield('scripts')
 
 </body>
 
