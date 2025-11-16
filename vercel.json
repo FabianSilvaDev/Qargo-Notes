@@ -8,6 +8,10 @@
     },
     "routes": [
         {
+            "src": "/(.*)\\.(png|jpg|jpeg|gif|svg|webp|ico|css|js|woff2?)",
+            "dest": "/public/$1.$2"
+        },
+        {
             "src": "/build/assets/(.*)",
             "dest": "/build/assets/$1"
         },
