@@ -1,7 +1,8 @@
-# Qargo Notes
+# Qargo Notes by Fabian Silva (Web developer Full Stack)
 
 A **Kanban-style task management** web application, built as a full-stack Laravel project, with user authentication, an interactive dashboard, and responsive design.
 
+## Project Link: [Qargo Notes](https://github.com/usuario/qargo-notes)
 ---
 
 ## 🚀 Technologies Used
