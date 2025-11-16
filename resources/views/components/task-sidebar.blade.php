@@ -1,5 +1,5 @@
 <aside id="taskSidebar"
-    class="w-64 bg-white shadow-md p-6 sm:absolute flex flex-col h-screen fixed top-0 left-0 transition-transform duration-300 z-50
+    class="w-64 bg-white shadow-md p-6 sm:fixed flex flex-col h-screen fixed top-0 left-0 transition-transform duration-300 z-50
            -translate-x-full sm:translate-x-0 sm:flex"
     :class="openSidebar ? 'translate-x-0' : '-translate-x-full'">
 

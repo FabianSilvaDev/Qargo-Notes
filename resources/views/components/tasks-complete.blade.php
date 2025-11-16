@@ -5,34 +5,44 @@
     </p>
     @foreach ($tasks as $t)
         @if ($t['label'] === 'complete')
-            <div class="max-w-[380px] w-full border rounded-xl bg-white p-4 h-fit">
-                <div class="flex items-center gap-4">
-                    <span class="flex items-center justify-center rounded-full bg-blue-400 text-white p-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd" fill-rule="evenodd"
-                                d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z">
-                            </path>
-                        </svg>
-                    </span>
-                    <p class="font-semibold text-gray-600">{{ $t['title'] }}</p>
+            <div class="task-div max-w-[380px] w-full border rounded-xl bg-white p-4 relative cursor-pointer hover:shadow-md transition ease-in-out"
+                data-id="{{ $t->id }}">
+
+                <div class="flex items-center gap-4 justify-between border-b border-gray-300 pb-2">
+                    <h3 class="text-xl capitalize font-semibold text-gray-600">
+                    {{ $t->title }}</h3>
+                    <x-heroicon-o-ellipsis-horizontal
+                        class="button-edit w-6 h-6 cursor-pointer hover:text-gray-600 text-gray-400 transition"
+                        id="buttonEdit" />
                 </div>
 
-                <!-- Message -->
-                <p class="mt-4 text-gray-600 text-sm truncate">
-                    {{ $t['description'] }}
+                <p class="description mt-4 text-gray-600 text-ms line-clamp-2 select-none">
+                    {{ $t->description }}
                 </p>
 
-                <!-- Actions -->
-                <div class="mt-6 flex flex-row gap-2">
-                    <button href="#"
-                        class="block w-full text-center bg-blue-600 text-white font-semibold text-sm py-3 rounded-lg">
-                        Finish
+                <form class="update-form hidden" method="POST" action="{{ route('tasks.update', $t->id) }}">
+                    @csrf
+                    @method('PATCH')
+                    <textarea name="description"
+                        class="description-input hidden w-full mt-4 p-2 h-full rounded resize-none"></textarea>
+
+                    <button type="submit" class="confirm-edit hidden mt-2 text-gray-200 hover:text-gray-400 transition">
+                        <x-heroicon-s-check-circle class="w-7 h-7" />
                     </button>
-                    <button
-                        class="block w-full text-center bg-gray-100 text-gray-600 font-semibold text-sm py-3 rounded-lg hover:bg-gray-200 transition">
-                        delete
-                    </button>
+                </form>
+
+                <div class="flex items-center gap-2 mt-4">
+                    <x-heroicon-o-check-badge class="w-6 h-6 text-green-400"/>
+                    <p class="font-medium text-sm text-gray-400">
+                        Task completed
+                    </p>
                 </div>
+
+                <p class="mt-2 text-sm text-gray-300 font-light">
+                    {{ \Carbon\Carbon::parse($t->created_at)->locale('en')->translatedFormat('F dS Y') }}
+                </p>
+
+                @include('ui.editTask.editTask')
             </div>
         @endif
     @endforeach

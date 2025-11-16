@@ -1,4 +1,4 @@
-<div class="bg-gray-100 z-50 w-full h-full hidden items-center justify-center absolute" id="taskForm">
+<div class="bg-gray-100 z-50 w-full h-full hidden items-center justify-center fixed overflow-y-hidden" id="taskForm">
     <form action="{{ url('/') }}" method="post"
         class="flex flex-col items-center mt-4 bg-gray-100 p-6 rounded sm:shadow-md max-w-[500px] w-full relative">
         <h2 class="text-5xl font-bold mb-5">

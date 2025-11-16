@@ -1,4 +1,4 @@
-<button class="button" id="showFormBtn">
+<button class="button" id="showFormBtn" @click="if (window.innerWidth < 640) openSidebar = false">
   Add Task
   <div class="hoverEffect">
     <div></div>

@@ -92,14 +92,13 @@ class TaskController extends Controller
 
         // Validar datos
         $request->validate([
-            'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'priority' => 'nullable|string',
-            'label' => 'nullable|string',
         ]);
 
         // Actualizar tarea
-        $task->update($request->only('title', 'description', 'priority', 'label'));
+        $task->update([
+            'description' => $request->description,
+        ]);
 
         return redirect()->back()->with('success', 'Tarea actualizada.');
     }

@@ -11,7 +11,7 @@
         <form action="{{ route('tasks.destroy', $t->id) }}" method="POST" class="delete-task-form">
             @csrf
             @method('DELETE')
-            <button type="submit" class="text-red-500 hover:text-red-700 font-semibold text-sm flex items-center gap-1">
+            <button type="submit" class="text-red-500 hover:text-red-700 font-semibold text-sm flex items-center gap-1 w-full">
                 <x-heroicon-s-trash class="w-5 h-5" />
                 Delete
             </button>
