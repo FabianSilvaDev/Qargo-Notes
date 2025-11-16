@@ -1,4 +1,4 @@
-<button class="button" id="showFormBtn" @click="if (window.innerWidth < 640) openSidebar = false">
+<button class="button showFormBtn"  @click="if (window.innerWidth < 640) openSidebar = false">
   Add Task
   <div class="hoverEffect">
     <div></div>
@@ -78,27 +78,28 @@
 
 <!-- Script para mostrar/ocultar -->
 <script>
-  const showFormBtn = document.getElementById('showFormBtn'); // botón para abrir
+{
+  const showFormBtns = document.querySelectorAll('.showFormBtn');
   const taskForm = document.getElementById('taskForm');
-  const closeFormBtn = document.querySelector('.closeFormBtn'); // botón para cerrar
+  const closeFormBtn = document.querySelector('.closeFormBtn');
 
-  // Mostrar modal
-  showFormBtn?.addEventListener('click', () => {
-    taskForm.classList.remove('hidden');
-    taskForm.classList.add('flex');
+  showFormBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      taskForm.classList.remove('hidden');
+      taskForm.classList.add('flex');
+    });
   });
 
-  // Cerrar modal
   closeFormBtn?.addEventListener('click', () => {
     taskForm.classList.add('hidden');
     taskForm.classList.remove('flex');
   });
 
-  // Cerrar si hace clic fuera del formulario
   taskForm?.addEventListener('click', (e) => {
     if (e.target === taskForm) {
       taskForm.classList.add('hidden');
       taskForm.classList.remove('flex');
     }
   });
+}
 </script>

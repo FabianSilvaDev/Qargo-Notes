@@ -38,3 +38,8 @@ Route::patch('/tasks/{task}/complete', [TaskController::class, 'complete'])->nam
 Route::patch('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
 
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+
+// Registro de usuario
+Route::get('/register', [UserController::class, 'showRegister'])->name('register');
+Route::post('/register', [UserController::class, 'store'])->name('register.perform');
+

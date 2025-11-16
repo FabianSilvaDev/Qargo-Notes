@@ -1,4 +1,4 @@
-<article class="bg-gray-100 p-2 flex flex-col  max-w-[390px] rounded-xl gap-3 h-fit relative z-1">
+<article class="task-card bg-gray-100 p-2 flex flex-col  max-w-[390px] rounded-xl gap-3 h-fit relative z-1">
     <p class="flex gap-3 ml-2 py-2 px-4 rounded-xl capitalize text-[#CAAC00] font-medium bg-[#FEF9E0] w-fit">
         <x-heroicon-s-beaker class="w-6 h-6 text-[#CAAC00]" />
         in progress

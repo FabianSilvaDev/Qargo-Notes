@@ -1,14 +1,43 @@
-<script>
 /* ----------------------------------------------------
- * 1. Open/Close Sidebar for each task
- * ---------------------------------------------------- */
+ *Task Search → Filtrar tareas por texto
+ * ----------------------------------------------------
+ */
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector("#taskSearch");
+    const tasks = document.querySelectorAll(".task-card"); 
+
+    searchInput?.addEventListener("input", e => {
+        const query = e.target.value.toLowerCase();
+
+        tasks.forEach(article => {
+            const taskDivs = article.querySelectorAll(".task-div");
+            let hasVisible = false; 
+
+            taskDivs.forEach(task => {
+                const text = task.innerText.toLowerCase();
+                const isVisible = text.includes(query);
+                task.classList.toggle("hidden", !isVisible);
+
+                if (isVisible) hasVisible = true;
+            });
+
+            // Ocultar el article si no hay tareas visibles
+            article.classList.toggle("hidden", !hasVisible);
+        });
+    });
+});
+
+
+/* ----------------------------------------------------
+ * Open/Close Sidebar for each task
+ * ----------------------------------------------------
+ */
 document.querySelectorAll(".button-edit").forEach(button => {
     button.addEventListener("click", e => {
         e.stopPropagation();
 
         const taskCard = button.closest(".task-div");
         const sidebar = taskCard.querySelector(".editTask-sidebar");
-
         if (!sidebar) return;
 
         sidebar.classList.toggle("opacity-0");
@@ -21,8 +50,9 @@ document.querySelectorAll(".button-edit").forEach(button => {
 
 
 /* ----------------------------------------------------
- * 2. Expand/Collapse description when clicking the card
- * ---------------------------------------------------- */
+ * Expand/Collapse description when clicking the card
+ * ----------------------------------------------------
+ */
 document.querySelectorAll(".task-div").forEach(card => {
     const desc = card.querySelector(".description");
     if (!desc) return;
@@ -35,15 +65,16 @@ document.querySelectorAll(".task-div").forEach(card => {
             e.target.closest(".editTask-sidebar")
         ) return;
 
-        desc.classList.toggle("line-clamp-2");
-        desc.classList.toggle("select-none");
+        desc.classList.toggle("line-clamp-2"); // muestra/oculta el recorte
+        desc.classList.toggle("select-none");  // bloquea selección cuando está colapsada
     });
 });
 
 
 /* ----------------------------------------------------
- * 3. Edit Description → show textarea
- * ---------------------------------------------------- */
+ * Edit Description → show textarea
+ * ----------------------------------------------------
+ */
 document.querySelectorAll(".edit-description").forEach(item => {
     item.addEventListener("click", e => {
         e.stopPropagation();
@@ -75,8 +106,9 @@ document.querySelectorAll(".edit-description").forEach(item => {
 
 
 /* ----------------------------------------------------
- * 4. Confirm → submit form
- * ---------------------------------------------------- */
+ * Confirm → submit form
+ * ----------------------------------------------------
+ */
 document.querySelectorAll(".confirm-edit").forEach(btn => {
     btn.addEventListener("click", e => {
         e.stopPropagation();
@@ -85,4 +117,3 @@ document.querySelectorAll(".confirm-edit").forEach(btn => {
         if (form) form.submit();
     });
 });
-</script>

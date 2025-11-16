@@ -4,7 +4,4 @@
         @include('components.tasks-inprogress')
         @include('components.tasks-complete')
     </div>
-    @section('scripts')
-        @include('scripts.tasks')
-    @endsection
 </section>

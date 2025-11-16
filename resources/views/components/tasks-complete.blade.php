@@ -1,11 +1,11 @@
-<article class="bg-gray-100 p-2 flex flex-col w-full max-w-[390px] rounded-xl gap-3 h-fit">
+<article class="task-card bg-gray-100 p-2 flex flex-col w-full max-w-[390px] rounded-xl gap-3 h-fit">
     <p class="flex gap-3 ml-2 py-2 px-4 rounded-xl w-fit  capitalize text-[#06AF53] font-medium bg-[#DDFEEE]">
         <x-heroicon-o-check-badge class="w-6 h-6 text-[#06AF53]" />
         complete task
     </p>
     @foreach ($tasks as $t)
         @if ($t['label'] === 'complete')
-            <div class="task-div max-w-[380px] w-full border rounded-xl bg-white p-4 relative cursor-pointer hover:shadow-md transition ease-in-out"
+            <div class=" task-div max-w-[380px] w-full border rounded-xl bg-white p-4 relative cursor-pointer hover:shadow-md transition ease-in-out"
                 data-id="{{ $t->id }}">
 
                 <div class="flex items-center gap-4 justify-between border-b border-gray-300 pb-2">
