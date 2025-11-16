@@ -52,7 +52,7 @@
                         @csrf
                         @method('patch')
                         <button
-                            class="block w-fit text-center bg-gray-100 text-gray-600 font-semibold text-sm py-3 rounded-lg hover:bg-gray-200 transition">
+                            class="block w-fit text-center bg-gray-100 text-gray-600 font-semibold text-sm py-3 px-4 rounded-lg hover:bg-gray-200 transition">
                             completed task
                         </button>
                     </form>

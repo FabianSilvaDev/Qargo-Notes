@@ -11,7 +11,8 @@
         <form action="{{ route('tasks.destroy', $t->id) }}" method="POST" class="delete-task-form">
             @csrf
             @method('DELETE')
-            <button type="submit" class="text-red-500 hover:text-red-700 font-semibold text-sm flex items-center gap-1 w-full">
+            <button type="submit"
+                class="text-red-500 hover:text-red-700 font-semibold text-sm flex items-center gap-1 w-full">
                 <x-heroicon-s-trash class="w-5 h-5" />
                 Delete
             </button>
@@ -38,15 +39,14 @@
 </div>
 
 <script>
-    const sidebar = document.querySelector('.editTask-sidebar');
-    const sidebarButtons = sidebar.querySelectorAll('li');
+    document.querySelectorAll('.editTask-sidebar').forEach(sidebar => {
+        const sidebarButtons = sidebar.querySelectorAll('li');
 
-    sidebarButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Oculta el sidebar
-            sidebar.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-            sidebar.classList.remove('opacity-100', 'scale-100');
+        sidebarButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sidebar.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                sidebar.classList.remove('opacity-100', 'scale-100');
+            });
         });
     });
-
 </script>
