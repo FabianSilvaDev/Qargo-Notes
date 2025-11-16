@@ -1,64 +1,164 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Qargo Notes
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A **Kanban-style task management** web application, built as a full-stack Laravel project, with user authentication, an interactive dashboard, and responsive design.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Technologies Used
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)&nbsp;
+![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)&nbsp;
+![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)&nbsp;
+![Alpine.js](https://img.shields.io/badge/alpine.js-%2300AEEF.svg?style=for-the-badge&logo=alpine.js&logoColor=white)&nbsp;
+![PostgreSQL](https://img.shields.io/badge/postgresql-%23336791.svg?style=for-the-badge&logo=postgresql&logoColor=white)&nbsp;
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)&nbsp;
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📝 Project Description
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Qargo Notes allows users to efficiently manage tasks. Users can register, log in, and organize their tasks into three states: **Pending**, **In Progress**, and **Completed**. The app includes a real-time search feature and inline task editing with a dynamic sidebar.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The project is fully **responsive**, optimized for both desktop and mobile devices, and is implemented as a full-stack Laravel application.
 
-## Laravel Sponsors
+Laravel was chosen for this project for several strategic and technical reasons:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+### 1. Production-ready Full Stack
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Laravel is a modern PHP framework that enables building complete applications (backend + frontend) in a structured and maintainable way. Its MVC architecture helps organize routes, controllers, and views consistently.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Built-in Authentication and Security
 
-## Code of Conduct
+- Laravel provides ready-to-use tools for:
+  - User registration and login  
+  - Password hashing  
+  - Authentication middleware  
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+This simplifies user management and protects the application from common vulnerabilities.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Database Integration
 
-## License
+With Eloquent ORM, Laravel makes it easy to manipulate data in PostgreSQL (or any supported database) via models and relationships, without the need to write raw SQL queries.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+### 4. Routes and Controllers
+
+Laravel allows defining clean, named routes along with controllers that organize the application logic. This improves code readability and scalability.
+
+---
+
+### 5. Modern Ecosystem
+
+- Supports Tailwind CSS and Alpine.js seamlessly  
+- Compatible with Vite for modern JS bundling  
+- Integrates easily with modern deployment platforms like Vercel  
+
+---
+
+## ⚙️ Functions
+
+- User Registration and Login (with password hashing)
+
+- Kanban-style Dashboard:
+
+  - Task classification: Pending, In Progress, and Completed
+
+  - Task priorities: High, Medium, Low
+
+  - Inline editing of task descriptions
+
+  - Mark tasks as started or completed
+
+- Real-time Task Search that automatically hides unmatched items
+
+- Sidebar for Task Editing and future options
+
+- Responsive Design using Tailwind CSS and Alpine.js
+
+- PostgreSQL Database (Neon) hosted on Vercel
+
+- Full-stack Deployment on Vercel (both front-end and back-end)
+
+---
+
+## 🟢 Project structure
+
+app/
+├── Http/
+│ ├── Controllers/
+│ │ ├── UserController.php
+│ │ └── TaskController.php
+│ └── Middleware/
+├── Models/
+│ ├── User.php
+│ └── Task.php
+resources/
+├── views/
+│ ├── auth/
+│ │ ├── login.blade.php
+│ │ └── register.blade.php
+│ ├── components/
+│ └── ui/
+└── js/
+├── app.js
+└── task-search.js
+routes/
+└── web.php
+
+---
+
+## 💻 facility and use
+
+Clone the repository:
+```bash
+git clone <URL_REPOSITORY>
+cd <Name_project>
+composer install
+```
+
+## ⚙️ Config file .env
+
+```
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=name_db
+DB_USERNAME=user
+DB_PASSWORD=password
+```
+## Run migrations
+
+```
+php artisan migrate
+
+```
+
+## Get up server:
+
+```
+php -S lovalhost:8000 -t public/
+
+```
+## 🔧Desired Features
+
+* Statistics Dashboard: Add visualizations with monthly metrics to monitor productivity and task completion.
+
+* Task Sharing: Allow users to share tasks with others via digital channels such as WhatsApp, email, or Telegram.
+
+* Comments on Shared Tasks: Enable users to leave comments on shared tasks, fostering collaboration.
+
+* File Upload and Storage: Attach files such as images, documents, or notes to tasks for added context.
+
+* Advanced User Profile Settings: Allow users to customize their profile details, notifications, and preferences.
+
+* Real-Time Multi-Device Updates: Integrate WebSockets for live updates across multiple devices. Currently, Vercel's persistent database allows for data updates, but changes require reloading the page.
 
 
-command for run the project;
 
-* php -S localhost:(numero de puerto para ejecutar el servidor) -t public/ *
