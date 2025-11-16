@@ -2,7 +2,8 @@
 
 A **Kanban-style task management** web application, built as a full-stack Laravel project, with user authentication, an interactive dashboard, and responsive design.
 
-## Project Link: [Qargo Notes](https://github.com/usuario/qargo-notes)
+## You can access the live version of **Qargo Notes** here:  
+[Qargo Notes Live](https://qargo-notes-peach.vercel.app/login)
 ---
 
 ## 🚀 Technologies Used
