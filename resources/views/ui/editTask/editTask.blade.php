@@ -1,4 +1,4 @@
-<div id="" class="editTask-sidebar z-50 w-[200px] bg-[#242832] from-[#242832] to-[#251c28] rounded-xl flex-col gap-2 p-[15px_0] absolute top-10 right-2
+<div class="editTask-sidebar z-50 w-[200px] bg-[#242832] from-[#242832] to-[#251c28] rounded-xl flex-col gap-2 p-[15px_0] absolute top-10 right-2
     opacity-0 scale-95 transform transition-all duration-300 ease-out pointer-events-none">
 
     <!-- Primera lista -->
@@ -8,6 +8,7 @@
             <x-heroicon-o-pencil class="w-5 h-5 text-[#7e8590] transition-all duration-300 ease-out" />
             <p class="font-semibold text-[#7e8590]">Edit</p>
         </li>
+
         <form action="{{ route('tasks.destroy', $t->id) }}" method="POST" class="delete-task-form">
             @csrf
             @method('DELETE')
@@ -17,6 +18,7 @@
                 Delete
             </button>
         </form>
+
         <li
             class="flex items-center gap-2.5 px-1.5 py-1 rounded-md cursor-pointer transition-all duration-300 ease-out hover:bg-[#383547d5] active:scale-95 text-[#bd89ff]">
             <x-heroicon-o-users class="w-5 h-5 text-[#bd89ff]" />
@@ -33,20 +35,18 @@
             <x-heroicon-o-archive-box-x-mark class="w-5 h-5 text-[#7e8590]" />
             <p class="font-semibold text-[#7e8590]">Cancel</p>
         </li>
-
     </ul>
-
 </div>
 
 <script>
-    document.querySelectorAll('.editTask-sidebar').forEach(sidebar => {
-        const sidebarButtons = sidebar.querySelectorAll('li');
-
-        sidebarButtons.forEach(btn => {
+(() => {
+    document.querySelectorAll('.editTask-sidebar').forEach(sb => {
+        sb.querySelectorAll('li').forEach(btn => {
             btn.addEventListener('click', () => {
-                sidebar.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-                sidebar.classList.remove('opacity-100', 'scale-100');
+                sb.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                sb.classList.remove('opacity-100', 'scale-100');
             });
         });
     });
+})();
 </script>
