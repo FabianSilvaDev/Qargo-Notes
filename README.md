@@ -119,7 +119,6 @@ resources/
 │ │ ├── login.blade.php
 │ │ └── register.blade.php
 │ ├── components/
-│ └── ui/
 └── js/
 ├── app.js
 └── task-search.js
