@@ -146,6 +146,14 @@ DB_DATABASE=name_db
 DB_USERNAME=user
 DB_PASSWORD=password
 ```
+
+## Install dependencies
+
+```
+composer install
+
+```
+
 ## Run migrations
 
 ```
